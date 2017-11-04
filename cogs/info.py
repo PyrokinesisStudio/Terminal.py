@@ -6,8 +6,6 @@ import os
 from discord.ext import commands
 from assets import repo
 
-mapsbaseurl = "https://maps.googleapis.com/maps/api/{ep}/json?{path}{dest}"
-
 
 class Information:
     def __init__(self, bot):

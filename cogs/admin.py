@@ -12,10 +12,6 @@ class Admin:
         if ctx.author.id in repo.owners:
             return await ctx.send(f"Yes **{ctx.author.name}** you are admin! ✅")
 
-        # Please do not remove this part :( #
-        if ctx.author.id == 86477779717066752:
-            return await ctx.send(f"Well kinda **{ctx.author.name}**.. you still own the source code")
-
         await ctx.send(f"no, heck off {ctx.author.name}")
 
     @commands.command()
@@ -26,8 +22,7 @@ class Admin:
             self.bot.unload_extension(f"cogs.{name}")
             self.bot.load_extension(f"cogs.{name}")
         except Exception as e:
-            await ctx.send(f"```\n{e}```")
-            return
+            return await ctx.send(f"```\n{e}```")
         await ctx.send(f"Reloaded extension **{name}.py**")
 
 
