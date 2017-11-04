@@ -1,0 +1,9 @@
+{
+  "apps": [
+    {
+      "name":"Terminal.py",
+      "script":"index.py",
+      "interpreter_args": "-u"
+    }
+  ]
+}
