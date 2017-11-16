@@ -17,7 +17,5 @@ class Bot(_Bot):
         super().__init__(*args, **kwargs)
 
     async def on_message(self, msg):
-        if not self.is_ready() or msg.author.bot or not permissions.can_send(msg):
-            return
-
-        await self.process_commands(msg)
+        if self.is_ready() and not msg.author.bot and permissions.can_send(msg):
+            await self.process_commands(msg)
