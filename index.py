@@ -5,11 +5,6 @@ from assets import permissions
 from data import Bot
 from discord.ext.commands import HelpFormatter
 
-description = """
-Terminal.py, a bot that is made to be used in terminal server
-"""
-
-
 class HelpFormat(HelpFormatter):
     async def format_help_for(self, context, command_or_bot):
         if permissions.can_react(context):
@@ -25,7 +20,16 @@ with open("config.json") as f:
     token = data["token"]
     prefix = data["prefix"]
 
-bot = Bot(command_prefix=prefix, prefix=prefix, pm_help=True, help_attrs=help_attrs, formatter=HelpFormat())
+description = """
+Terminal.py, a bot that is made to be used in terminal server
+"""
+
+bot = Bot(command_prefix=prefix,
+          prefix=prefix,
+          description=description,
+          pm_help=True,
+          help_attrs=help_attrs,
+          formatter=HelpFormat())
 
 for file in os.listdir("cogs"):
         if file.endswith(".py"):
