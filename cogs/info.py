@@ -1,7 +1,7 @@
+import os
 import time
 import discord
 import psutil
-import os
 
 from discord.ext import commands
 from assets import repo
