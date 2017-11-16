@@ -15,12 +15,12 @@ class Information:
     @commands.command()
     async def ping(self, ctx):
         """ Pong! """
-        mesg = "pong"
+        text = "Pong"
         before = time.monotonic()
-        pong = await ctx.send(mesg)
+        message = await ctx.send(text)
         after = time.monotonic()
         ping = (after - before) * 1000
-        await pong.edit(content=f"{mesg}   |   {int(ping)}ms")
+        await messag.edit(content=f"{text}   |   {int(ping)}ms")
 
     @commands.command()
     async def source(self, ctx):
@@ -30,14 +30,14 @@ class Information:
     @commands.command(aliases=['info', 'stats'])
     async def about(self, ctx):
         """ About the bot """
-        ramUsage = self.process.memory_full_info().rss / 1024**2
+        ram_usage = self.process.memory_full_info().rss / 1024**2
 
         embed = discord.Embed(colour=0xC29FAF)
         embed.set_thumbnail(url=ctx.bot.user.avatar_url)
         embed.add_field(name="Developer", value="AlexFlipnote", inline=True)
         embed.add_field(name="Library", value="discord.py", inline=True)
         embed.add_field(name="Servers", value=len(ctx.bot.guilds), inline=True)
-        embed.add_field(name="RAM", value=f"{ramUsage:.2f} MB", inline=True)
+        embed.add_field(name="RAM", value=f"{ram_usage:.2f} MB", inline=True)
 
         await ctx.send(content=f"ℹ About **{ctx.bot.user}** | **{repo.version}**", embed=embed)
 
