@@ -15,12 +15,10 @@ class Information:
     @commands.command()
     async def ping(self, ctx):
         """ Pong! """
-        text = "Pong"
         before = time.monotonic()
-        message = await ctx.send(text)
-        after = time.monotonic()
-        ping = (after - before) * 1000
-        await messag.edit(content=f"{text}   |   {int(ping)}ms")
+        message = await ctx.send("Pong")
+        ping = (time.monotonic() - before) * 1000
+        await message.edit(content=f"Pong   |   {int(ping)}ms")
 
     @commands.command()
     async def source(self, ctx):
@@ -37,7 +35,7 @@ class Information:
         embed.add_field(name="Developer", value="AlexFlipnote", inline=True)
         embed.add_field(name="Library", value="discord.py", inline=True)
         embed.add_field(name="Servers", value=len(ctx.bot.guilds), inline=True)
-        embed.add_field(name="RAM", value=f"{ram_usage:.2f} MB", inline=True)
+        embed.add_field(name="Bot RAM Usage", value=f"{ram_usage:.2f} MB", inline=True)
 
         await ctx.send(content=f"ℹ About **{ctx.bot.user}** | **{repo.version}**", embed=embed)
 
