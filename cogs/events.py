@@ -23,7 +23,7 @@ class Events:
         self.bot = bot
 
     async def on_member_join(self, user):
-        if user.bot is True:
+        if user.bot:
             therole = discord.Object(id=352463488146341888)
             await self.bot.get_channel(repo.default_channel).send(join_message(user, bot=True))
             await user.add_roles(therole, reason="User joined | Bot account")
@@ -33,7 +33,7 @@ class Events:
             await user.add_roles(therole, reason="User joined | User account")
 
     async def on_ready(self):
-        print(f'{self.bot.user} is now ready!')
+        print(f"{self.bot.user} is now ready!")
         await self.bot.change_presence(game=discord.Game(type=0, name="with beers 🍻"), status=discord.Status.dnd)
 
     async def on_command_error(self, ctx, err):
@@ -43,15 +43,14 @@ class Events:
         elif isinstance(err, errors.CommandInvokeError):
             await ctx.send(f"There was an error processing the command...\n{err.original}")
 
-        elif isinstance(err, errors.CheckFailure):
-            pass
-
         elif isinstance(err, errors.CommandOnCooldown):
             await ctx.send(f"This command is on cooldown... try again in {err.retry_after:.0f} seconds.")
 
         elif isinstance(err, errors.CommandNotFound):
             pass
-
+        
+        elif isinstance(err, errors.CheckFailure):
+            pass
 
 def setup(bot):
     bot.add_cog(Events(bot))
