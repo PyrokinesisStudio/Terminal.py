@@ -24,9 +24,10 @@ class Events:
 
     async def on_member_join(self, user):
         if user.bot:
-            therole = discord.Object(id=381482564944134154)
+            unverified = discord.Object(id=381482564944134154)
+            bot = discord.Object(id=352463488146341888)
             await self.bot.get_channel(repo.default_channel).send(join_message(user, bot=True))
-            await user.add_roles(therole, reason="User joined | Bot account")
+            await user.add_roles(unverified, bot, reason="User joined | Bot account")
         else:
             therole = discord.Object(id=352460381119053825)
             await self.bot.get_channel(repo.default_channel).send(join_message(user, bot=False))
