@@ -9,10 +9,10 @@ from discord.ext.commands import AutoShardedBot as _Bot
 
 
 class Bot(_Bot):
-    def __init__(self, *args, prefix=None, **kwargs):
+    def __init__(self, *args, **kwargs):
         with open("config.json") as f:
             self.config = json.load(f)
-        self.prefix = prefix
+        self.prefix = kwargs.get("prefix")
         self.executor = ThreadPoolExecutor(max_workers=16)
         super().__init__(*args, **kwargs)
 
