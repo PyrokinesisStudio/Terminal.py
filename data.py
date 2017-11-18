@@ -5,10 +5,10 @@ try:
     import ujson as json
 except ImportError:
     import json
-from discord.ext.commands import AutoShardedBot as _Bot
+from discord.ext.commands import AutoShardedBot
 
 
-class Bot(_Bot):
+class Bot(AutoShardedBot):
     def __init__(self, *args, **kwargs):
         with open("config.json") as f:
             self.config = json.load(f)
